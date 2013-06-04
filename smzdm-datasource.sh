@@ -17,7 +17,7 @@ fi
 
 wget ${RSS_URL} -O - 2>/dev/null | 
 	xmlstarlet sel -t -m "/rss/channel/item" -v "guid" -n -v "title" -n -v "link" -n -n | 
-	sed '/^$/d' | sed '$!N;s/\n/ /' | egrep -h $KEYWORD > $TMPFILE
+	sed '/^$/d' | sed '$!N;s/\n/ /' | egrep -hi $KEYWORD > $TMPFILE
 	
 	
 cat $TMPFILE | while read line;
