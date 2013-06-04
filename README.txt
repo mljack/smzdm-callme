@@ -1,4 +1,4 @@
-magang@gmail 2013.6.4
+magang@gmail.com 2013.6.4
 
 smzdm-datasource.sh程序通过wget下载smzdm.com网站的RSS，输出给xmlstarlet处理，经过关键词egrep匹配保存到$TMPFILE文件
 关键词在smzdm-datasource.sh里KEYWORD定义，多个关键词通过|分隔
