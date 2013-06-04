@@ -22,10 +22,14 @@ wget ${RSS_URL} -O - 2>/dev/null |
 	
 cat $TMPFILE | while read line;
 do 
+#取标题部分，删除URL部分
 TITLE=$(echo $line | sed -e 's!http\(s\)\{0,1\}://[^[:space:]]*!!g')
+#取什么值得买ID作为主键加入数据库
 ITEMID=${line##*/}
+
 HIT=$(sqlite3 $DBFILE  "select * from smzdm where id=$ITEMID"|wc -l)
- if [ $HIT = 0 ]; then
+#如果至少有一条匹配关键词则插入到数据库里
+if [ $HIT = 0 ]; then
  echo "NOT HIT";
  sqlite3 $DBFILE "insert into smzdm (id,title,flag) values ('$ITEMID','$TITLE','NOTCALLED');";
  fi
