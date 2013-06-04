@@ -1,7 +1,7 @@
 magang@gmail 2013.6.4
 
 smzdm-datasource.sh程序通过wget下载smzdm.com网站的RSS，输出给xmlstarlet处理，经过关键词egrep匹配保存到$TMPFILE文件
-
+关键词在smzdm-datasource.sh里KEYWORD定义，多个关键词通过|分隔
 Bash循环将$TMPFILE的促销信息逐一添加到SQLite数据库smzdm.db，标记为NOTCALLED，即没有发出过通知。
 
 check_db.sh脚本检查smzdm.db数据库，遇到NOTCALLED未通知的记录就调用callfile-generator.sh，并把记录的标题title作为参数传递。
