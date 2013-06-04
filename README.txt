@@ -8,7 +8,9 @@ check_db.sh脚本检查smzdm.db数据库，遇到NOTCALLED未通知的记录就�
 
 callfile-generator.sh根据获得的标题title生成callfile，呼叫制定电话号码，并对接asterisk-googletts生成促销信息的TTS发音。
 
-安装时需要安装asterisk-googletts
+安装时
+需要安装asterisk-googletts
+需要安装xmlstarlet http://xmlstar.sourceforge.net/download.php
 修改脚本为可执行chmod a+x *.sh
 修改/etc/crontab添加
 	#smzdm-callme
@@ -16,6 +18,8 @@ callfile-generator.sh根据获得的标题title生成callfile，呼叫制定电�
 	*/1  * * * * root /root/smzdm-callme/check_db.sh
 即实现每分钟检查网站
 
+SQLite调试命令
+sqlite3 smzdm.db  "select * from smzdm";
 
 参考信息
 http://zaf.github.io/asterisk-googletts/
