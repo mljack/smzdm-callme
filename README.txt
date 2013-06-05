@@ -16,6 +16,12 @@ callfile-generator.sh根据获得的标题title生成callfile，呼叫制定电�
 	#smzdm-callme
 	*/1  * * * * root /root/smzdm-callme/smzdm-datasource.sh
 	*/1  * * * * root /root/smzdm-callme/check_db.sh
+修改/etc/rc.local添加
+ # Monitor new callfile in /tmp, 
+ # if there is any, move it to Asterisk outgoing folder, so a call will be initialized
+ # So this script will run after bootup
+  nohup /root/mv_call_file_to_asterisk_outgoing_folder.sh 0<&- &>/dev/null &
+  
 即实现每分钟检查网站
 
 SQLite调试命令
