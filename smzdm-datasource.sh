@@ -3,7 +3,7 @@
 RSS_URL=http://feed.smzdm.com/
 #Define your keyword
 #定义你感兴趣的关键词，多个关键词用|隔开
-KEYWORD='神价格|整理|手慢无|历史低价|bug|八哥|尿裤'
+KEYWORD='神价格|手慢无|历史低价|bug|八哥|尿裤'
 DBFILE=/tmp/smzdm.db
 TMPFILE=/tmp/smzdm.tmp
 
