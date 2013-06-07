@@ -6,6 +6,18 @@ KEYWORD='神价格|整理|手慢无|历史低价|bug|八哥'
 DBFILE=/tmp/smzdm.db
 TMPFILE=/tmp/smzdm.tmp
 
+#夜间免打扰判断
+#取当前时间
+current_time=`date +%H%M`;
+#睡觉时间
+SLEEP_TIME='2200'
+#睡醒时间
+WAKEUP_TIME='0800'
+
+if [ "$current_time" -ge $SLEEP_TIME ] || [ "$current_time" -le $WAKEUP_TIME ]; then
+   echo "No alert during sleep!"
+   exit 1
+fi
 #对所有没有通知用户的记录
 sqlite3 $DBFILE "select id from smzdm where flag='NOTCALLED'" | while read line;
 do
