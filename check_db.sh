@@ -29,6 +29,8 @@ TITLE=$(sqlite3 $DBFILE "select title from smzdm where id=$line")
 TITLE=$(echo $TITLE | tr -d ' ')
 #Generate callfile for Asterisk, TITLE is sent for Google Translate TTS
 #调用脚本生成Asterisk的callfile，TITLE作为参数传递给AGI生成TTS语音
+#Send log to syslog 发送日志到syslog
+logger "Calling for $TITLE"
 /root/smzdm-callme/callfile-generator.sh $TITLE
 echo $TITLE
 #Toggle the CALLED/NOTCALLED flag
